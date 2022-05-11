@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments/bootstrap::head(title='menu.home',extra='')"></head>
+<header th:insert="fragments/parts::menu"></header>
+<body>
+	<div class="container mt-5">
+		<div class="row mt-5 justify-content-center">
+			<div class="col-6 col-md-5 mt-5 mb-5 w-100 h-100 offset-md-3">
+				<img src="/img/Bienvenido.png" class="img-fluid w-75 h-75 b-2">
+			</div>
+		</div>
+	</div>
+</body>
+<footer th:replace="fragments/parts::footer(info='menu.home',extra='')"></footer>
+</html>
