@@ -24,6 +24,6 @@ En primer lugar el usuario debe logearse/registarse para poder acceder a la plat
 Figma: https://www.figma.com/file/rUYVbpCCCnadTh7sZurjJF/plataformaexamenes?node-id=0%3A1 
 
 # Estructura del Proyecto
-/ERRDiagram&Database/ : directorio destinado al diagrama y base de datos del proyecto.
-/plataformaexamenes/ : directorio destinado al desarrollo del proyecto.
-/FIGMA : archivo que contiene el enlace a figma, con el prototipo de la interfaz del proyecto.
+- /ERRDiagram&Database/ : directorio destinado al diagrama y base de datos del proyecto.
+- /plataformaexamenes/ : directorio destinado al desarrollo del proyecto.
+- /FIGMA : archivo que contiene el enlace a figma, con el prototipo de la interfaz del proyecto.
