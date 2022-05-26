@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<header th:insert="fragments/parts::menu"></header>
+
+<head th:replace="fragments/bootstrap::head(title='menu.preg',extra='')"></head>
+<body style="background-color: #426cb4">
+	<div class="container mt-5">
+		<div class="row mt-5 justify-content-center">
+			<div class="btn-toolbar" role="toolbar">
+					<div class="btn-group">
+						<button type="button" class="btn btn-default" onclick="history.back()" style="background-color: #ed8074; border: 3px black">
+							<span class="bi bi-arrow-left-circle-fill"></span>
+						</button>
+					</div>
+				</div>
+			<div th:if="${exito} != null" class="alert alert-success alert-dismissible fade show mt-5 d-flex" role="alert">
+  				<span th:text="#{${exito}}"></span>
+  				<button type="button" class="close justify-content-end" data-dismiss="alert" aria-label="Close" onClick="$('.alert').alert('close')">
+  					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<h1 class="text-center mt-3" th:text="#{menu.preg}" style="color:white"></h1>
+			<div class="col-8">
+				<table class="table table-stripped table-hover">
+					<thead class="table-light">
+					<tr>
+						<th th:text="#{pregunta}"></th>
+						<th th:text="#{num_pregunta}"></th>
+						<th th:text="#{respuesta}"></th>
+						<th th:text="#{test}"></th>
+						<th th:text="#{num_ref}"></th>
+						<th th:text="#{edit}"></th>
+						<th th:text="#{add}"></th>
+					</tr>
+					</thead>					
+					<tbody style="background-color: #FFFFFF">
+					 <tr th:each="g : ${preguntas}">
+					 	<td th:text="${g.getPreguntas()}"></td>
+					 	<td th:text="${g.getNum_pregunta()}"></td>
+					 	<td th:text="${g.getRespuestas()}"></td>
+					 	<td th:text="${g.getExamen().getId()}"></td>
+					 	<td th:text="${g.getId()}"></td>
+					    <td><a th:href="@{'/preguntas/edit?pregunta='+${g.getId()}}"><i class="bi bi-pen-fill" style="color: black"></i></a></td>
+					 	<td><a th:href="@{/preguntas/addPregunta/}"><i class="bi bi-clipboard2-plus" style="color: black"></i></a></td>
+					 </tr>					
+					</tbody>
+				</table>
+				
+			</div>
+			
+		</div>
+	</div>
+</body>
+<footer th:replace="fragments/parts::footer(info='menu.preg',extra='')"></footer>
+</html>

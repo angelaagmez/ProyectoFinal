@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<header th:insert="fragments/parts::menu"></header>
+<head th:replace="fragments/bootstrap::head(title='menu.updateSubject',extra='')"></head>
+<body style="background-color: #426cb4">
+	<div class="container mt-5">
+		<div class="row mt-5 justify-content-center">
+			<div class="btn-toolbar" role="toolbar">
+					<div class="btn-group">
+						<button type="button" class="btn btn-default" onclick="history.back()" style="background-color: #ed8074; border: 3px black">
+							<span class="bi bi-arrow-left-circle-fill"></span>
+						</button>
+					</div>
+				</div>
+			<div class="col-6">
+				<form th:action="@{/asignaturas/edit}" method="post" th:object="${asignatura}">
+					<label for="id" class="form-label mt-3" th:text="#{id}"></label>
+					<input type="text" class="form-control" id="id" name="id"
+						th:field="*{id}" readonly>
+					<label for="nombre" class="form-label mt-3" th:text="#{name}"></label>
+					<input type="text" class="form-control" id="nombre" name="nombre"
+						th:field="*{nombre}" required>	
+					<label for="curso" class="form-label mt-3" th:text="#{course}"></label>
+					<input type="text" class="form-control" id="curso" name="curso"
+						th:field="*{curso}" required>		
+                    <label for="grado" class="form-label mt-3" th:text="#{grade}"></label>
+                    <select name="grado" class="form-select mt-3"  th:field="*{grado}">
+                                <option th:each="g : ${grados}" 
+                                th:value="${g.id}" 
+                                th:text="${g.nombre}" 
+                               ></option>
+                    </select>				
+					<h6 class="text-danger" th:if="${error!=null}" th:text="#{'errorSubject'}"></h6>	
+					<button type="submit" class="btn btn-primary w-100 mt-3" th:text="#{update}"> </button>	
+				</form>
+			</div>
+			
+		</div>
+	</div>
+</body>
+<footer th:replace="fragments/parts::footer(info='menu.updateSubject',extra='')"></footer>
+</html>
