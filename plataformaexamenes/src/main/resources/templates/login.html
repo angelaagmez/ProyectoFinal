@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<link href="css/login.css"
+      rel="stylesheet" type="text/css">
+<head th:replace="fragments/bootstrap::head(title='Login',extra='')"></head>
+<body>
+<div th:classapend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje!=null}"
+	th:text="${mensaje}"
+	class="alert"
+	style="background-color: #ed8074; color:white; font-family: montserrat">
+	
+</div>
+	<div class="simple-login-container ">
+		<div class="row justify-content-center">
+			<div class="col-6 col-md-5 justify-content-center">
+				<h2 style="font-weight: bold" class="mt-4">INTRODUZCA SUS DATOS</h2>
+				
+				<form th:action="@{/login}" th:object="${usuario}" method="post">
+					<div class="form-group col-md-5 offset-md-2">
+						<label for="userName"></label> <input type="text"
+							 id="userName"
+							placeholder="usuario" th:field="*{userName}" required>
+					</div>
+					<div class="form-group col-md-5 offset-md-2">
+						<label for="password"></label> <input type="password"
+							 id="password" placeholder="contraseña" th:field="*{password}" required>
+					</div>
+					<div class="form-check offset-md-2 mt-2">
+						<input type="checkbox" class="form-check-input" id="exampleCheck1">
+						<label class="form-check-label" for="exampleCheck1">Recuerdame</label>
+					</div>
+					<button type="submit" class="btn btn-ttc justify-content-center col-md-5 mt-3">Entrar</button>
+				</form>
+
+				<div class="col-md-12 mt-2">
+					<p>
+						¿No estas registrado? <a href="register">Registrate aqui</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
