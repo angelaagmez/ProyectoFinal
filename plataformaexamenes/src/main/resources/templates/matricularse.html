@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<header th:insert="fragments/parts::menu"></header>
+<head th:replace="fragments/bootstrap::head(title='menu.matri',extra='')" style="font-family: montserrat"></head>
+<body style="background-color: #426cb4; font-family: montserrat">
+	<div class="container mt-5">
+		<div class="row mt-5 justify-content-center">
+			<div class="btn-toolbar" role="toolbar">
+					<div class="btn-group">
+						<button type="button" class="btn btn-default" onclick="history.back()" style="background-color: #ed8074; border: 3px black">
+							<span class="bi bi-arrow-left-circle-fill"></span>
+						</button>
+					</div>
+				</div>
+			<div class="col-6">
+				<form th:action="@{/matricularse}" method="post" th:object="${matricula}">
+					<label for="asignaturas" class="form-label mt-3" th:text="#{menu.subject}"></label>
+					<input type="hidden" class="form-control" id="asignaturas" name="asignaturas"
+						th:field="*{id_asignatura}" readonly>
+					<input type="text" class="form-control" id="asignaturas" name="asignaturas"
+						th:value="${asignatura.getNombre()}" readonly>
+                    <label for="usuarios" class="form-label mt-3" th:text="#{username}"></label>
+					<select name="usuarios" id="usuarios" class="form-select mt-3" th:field="*{id_usuario}">
+                                <option th:each="g : ${usuarios}" 
+                                th:value="${g.id}" 
+                                th:text="${g.nombre}" 
+                               ></option>
+                    </select>
+                    <label for="num_alumnos" class="form-label mt-3" th:text="#{num_alum}"></label>
+					<input type="text" name="num_alumnos" id="num_alumnos" class="form-control mt-3" 
+						th:field="*{num_alumnos}" required>						
+					<h6 class="text-danger" th:if="${error!=null}" th:text="#{'errorSubject'}"></h6>	
+					<button type="submit" class="btn btn-primary w-100 mt-3" style="background-color: #ed8074" th:text="#{add}"> </button>	
+				</form>
+			</div>
+			
+		</div>
+	</div>
+</body>
+<footer th:replace="fragments/parts::footer(info='menu.matri',extra='')"></footer>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<header th:insert="fragments/parts::menu"></header>
+<head th:replace="fragments/bootstrap::head(title='menu.updatePreg' ,extra='')"></head>
+<body style="background-color: #426cb4">
+	<div class="container mt-5">
+		<div class="row mt-5 justify-content-center">
+			<div class="btn-toolbar" role="toolbar">
+					<div class="btn-group">
+						<button type="button" class="btn btn-default" onclick="history.back()" style="background-color: #ed8074; border: 3px black">
+							<span class="bi bi-arrow-left-circle-fill"></span>
+						</button>
+					</div>
+				</div>
+			<div class="col-6">
+				<form th:action="@{/preguntas/edit}" method="post"	th:object="${preguntas}">
+					<label for="id" class="form-label mt-3" th:text="#{id}"></label>
+					<input type="text" class="form-control" id="id" name="id"
+						th:field="*{id}" readonly>
+					<label for="preguntas" class="form-label mt-3" th:text="#{pregunta}"></label>
+					<input type="text" class="form-control" id="preguntas" name="preguntas"
+						th:field="*{preguntas}" required>	
+					<label for="num_pregunta" class="form-label mt-3" th:text="#{num_pregunta}"></label>
+					<input type="text" class="form-control" id="num_pregunta" name="num_pregunta"
+						th:field="*{num_pregunta}" required>
+					<label for="respuestas" class="form-label mt-3" th:text="#{respuesta}"></label>
+					<input type="text" class="form-control" id="respuestas" name="respuestas"
+						th:field="*{respuestas}" required>
+					<label for="examen" class="form-label mt-3" th:text="#{test}"></label>
+					<select name="examen" class="form-select mt-3"  th:field="*{examen}">
+                                <option th:each="g : ${examenes}" 
+                                th:value="${g.id}" 
+                                th:text="${g.id} + ' ' + '-' + ' ' + '('+${g.asignatura.nombre}+')'"
+                               ></option>
+                    </select>						
+					<h6 class="text-danger" th:if="${error!=null}" th:text="#{'errorGrado'}"></h6>	
+					<button type="submit" class="btn btn-primary w-100 mt-3" style="background-color: #ed8074" th:text="#{update}"> </button>	
+				</form>
+			</div>
+			
+		</div>
+	</div>
+</body>
+<footer th:replace="fragments/parts::footer(info='menu.updatePreg',extra='')"></footer>
+</html>
