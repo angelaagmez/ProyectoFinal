@@ -27,3 +27,5 @@ Figma: https://www.figma.com/file/rUYVbpCCCnadTh7sZurjJF/plataformaexamenes?node
 - /ERRDiagram&Database/ : directorio destinado al diagrama y base de datos del proyecto.
 - /plataformaexamenes/ : directorio destinado al desarrollo del proyecto.
 - /FIGMA : archivo que contiene el enlace a figma, con el prototipo de la interfaz del proyecto.
+- .zip : archivo comprimido que contiene la app web.
+- .pdf : manuales y documentos del proyecto.
